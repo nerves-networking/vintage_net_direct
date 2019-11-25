@@ -1,4 +1,4 @@
-defmodule VintageNet.Technology.Gadget do
+defmodule VintageNetGadget do
   @behaviour VintageNet.Technology
 
   alias VintageNet.Interface.RawConfig
@@ -15,7 +15,7 @@ defmodule VintageNet.Technology.Gadget do
   with IP subnets used on either computer.
 
   Configurations for this technology are maps with a `:type` field set
-  to `VintageNet.Technology.Gadget`. Gadget-specific options are in
+  to `VintageNetGadget`. Gadget-specific options are in
   a map under the `:gadget` key. These include:
 
   * `:hostname` - if non-nil, this overrides the hostname used for computing
@@ -25,7 +25,7 @@ defmodule VintageNet.Technology.Gadget do
   Most users should specify the following configuration:
 
   ```elixir
-  %{type: VintageNet.Technology.Gadget}
+  %{type: VintageNetGadget}
   ```
   """
   @impl true

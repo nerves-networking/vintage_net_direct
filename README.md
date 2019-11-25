@@ -26,7 +26,7 @@ And then add the following to your `:vintage_net` configuration:
 ```elixir
   config :vintage_net, [
     config: [
-      {"usb0", %{type: VintageNet.Technology.Gadget}}},
+      {"usb0", %{type: VintageNetGadget}}},
     ]
   ]
 ```
