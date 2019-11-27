@@ -2,5 +2,5 @@
 
 ## v0.7.0
 
-Initial `vintage_net_gadget` release.
+Initial `vintage_net_direct` release.
 

@@ -1,0 +1,123 @@
+defmodule VintageNetDirect do
+  @behaviour VintageNet.Technology
+
+  alias VintageNet.Interface.RawConfig
+  alias VintageNet.IP.IPv4Config
+
+  @moduledoc """
+  Support for directly connected Ethernet configurations
+
+  Direct Ethernet connections are those where the network connects only two
+  devices. Examples include a virtual Ethernet interface being run over a USB
+  cable. This is a popular Nerves configuration for development where the USB
+  cable provides power and networking to a Raspberry Pi, Beaglebone or other
+  "USB Gadget"-capable board. Another example would be a direct Ethernet
+  connection between a device and a development computer.  Such a connection is
+  handy when a router isn't readily available.
+
+  The VintageNet Technology works by assigning a static IP address to the
+  Ethernet interface on this side of the connection and running a DHCP server
+  to assign an IP address to the other side of the cable.  IP addresses are
+  computed based on the hostname and interface name. A /30 subnet is used for
+  the two IP addresses for each side of the cable to try to avoid conflicts
+  with IP subnets used on either computer. The DHCP server in use is very
+  simple and assigns the same IP address every time.
+
+  Note that many decisions were made to make this use case work well. If
+  you're thinking about use cases with more than just the one cable and two
+  endpoints, you'll want to look elsewhere.
+
+  Configurations for this technology are maps with a `:type` field set to
+  `VintageNetDirect`. `VintageNetDirect`-specific options are in a map under
+  the `:vintage_net_direct` key (formerly the `:gadget` key). These include:
+
+  * `:hostname` - if non-nil, this overrides the hostname used for computing
+    a unique IP address for this interface. If unset, `:inet.gethostname/0`
+    is used.
+
+  Most users should specify the following configuration:
+
+  ```elixir
+  %{type: VintageNetDirect}
+  ```
+  """
+  @impl true
+  def normalize(%{type: __MODULE__} = config) do
+    normalized =
+      get_specific_options(config)
+      |> normalize_options()
+
+    %{type: __MODULE__, vintage_net_direct: normalized}
+  end
+
+  defp get_specific_options(config) do
+    Map.get(config, :vintage_net_direct) || Map.get(config, :gadget)
+  end
+
+  defp normalize_options(%{hostname: hostname}) when is_binary(hostname) do
+    %{hostname: hostname}
+  end
+
+  defp normalize_options(_specific_config), do: %{}
+
+  @impl true
+  def to_raw_config(ifname, %{type: __MODULE__} = config, opts) do
+    normalized_config = normalize(config)
+
+    # Derive the subnet based on the ifname, but allow the user to force a hostname
+    subnet =
+      case normalized_config.vintage_net_direct do
+        %{hostname: hostname} ->
+          OneDHCPD.IPCalculator.default_subnet(ifname, hostname)
+
+        _ ->
+          OneDHCPD.IPCalculator.default_subnet(ifname)
+      end
+
+    ipv4_config = %{
+      ipv4: %{
+        method: :static,
+        address: OneDHCPD.IPCalculator.our_ip_address(subnet),
+        prefix_length: OneDHCPD.IPCalculator.prefix_length()
+      }
+    }
+
+    %RawConfig{
+      ifname: ifname,
+      type: __MODULE__,
+      source_config: normalized_config,
+      child_specs: [
+        one_dhcpd_child_spec(ifname)
+      ]
+    }
+    |> IPv4Config.add_config(ipv4_config, opts)
+  end
+
+  @impl true
+  def ioctl(_ifname, _command, _args) do
+    {:error, :unsupported}
+  end
+
+  @impl true
+  def check_system(opts) do
+    # TODO
+    with :ok <- check_program(opts[:bin_ifup]) do
+      :ok
+    end
+  end
+
+  defp check_program(path) do
+    if File.exists?(path) do
+      :ok
+    else
+      {:error, "Can't find #{path}"}
+    end
+  end
+
+  defp one_dhcpd_child_spec(ifname) do
+    %{
+      id: {OneDHCPD, ifname},
+      start: {OneDHCPD, :start_server, [ifname]}
+    }
+  end
+end

@@ -1,12 +1,12 @@
-defmodule VintageNetGadget.MixProject do
+defmodule VintageNetDirect.MixProject do
   use Mix.Project
 
   @version "0.7.0"
-  @source_url "https://github.com/nerves-networking/vintage_net_gadget"
+  @source_url "https://github.com/nerves-networking/vintage_net_direct"
 
   def project do
     [
-      app: :vintage_net_gadget,
+      app: :vintage_net_direct,
       version: @version,
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -31,7 +31,7 @@ defmodule VintageNetGadget.MixProject do
   defp elixirc_paths(_), do: ["lib"]
 
   defp description do
-    "USB Gadget networking for VintageNet"
+    "Direct Ethernet networking for VintageNet"
   end
 
   defp package do
@@ -54,7 +54,7 @@ defmodule VintageNetGadget.MixProject do
       {:ex_doc, "~> 0.19", only: :docs, runtime: false},
       {:excoveralls, "~> 0.8", only: :test, runtime: false},
       {:dialyxir, "~> 1.0.0-rc.6", only: [:dev, :test], runtime: false},
-      {:vintage_net, "~> 0.7.0", path: "../vintage_net", override: true},
+      {:vintage_net, "~> 0.7.0-dev", path: "../vintage_net", override: true},
       {:one_dhcpd, "~> 0.2.3"}
     ]
   end

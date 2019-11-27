@@ -1,22 +1,26 @@
-defmodule VintageNet.Technology.GadgetTest do
+defmodule GadgetCompatibilityTest do
   use ExUnit.Case
   alias VintageNet.Interface.RawConfig
   alias VintageNet.Technology.Gadget
 
   import VintageNetTest.Utils
 
-  test "normalization simplifies configuration" do
+  #
+  # These tests ensure that VintageNet.Technology.Gadget users get updated properly.
+  # This is super-important to keep for a while so that pre-0.7.0 users are not broken.
+  #
+  test "gadget configurations are normalized to VintageNetDirect" do
     input = %{type: VintageNet.Technology.Gadget, random_field: 42}
 
-    assert Gadget.normalize(input) == %{type: VintageNet.Technology.Gadget, gadget: %{}}
+    assert Gadget.normalize(input) == %{type: VintageNetDirect, vintage_net_direct: %{}}
   end
 
   test "normalization preserves hostname override" do
     input = %{type: VintageNet.Technology.Gadget, gadget: %{hostname: "my_host"}}
 
     assert Gadget.normalize(input) == %{
-             type: VintageNet.Technology.Gadget,
-             gadget: %{hostname: "my_host"}
+             type: VintageNetDirect,
+             vintage_net_direct: %{hostname: "my_host"}
            }
   end
 
@@ -27,11 +31,12 @@ defmodule VintageNet.Technology.GadgetTest do
     }
 
     output = Gadget.to_raw_config("usb0", input, default_opts())
+    normalized_input = Gadget.normalize(input)
 
     expected = %RawConfig{
       ifname: "usb0",
-      type: VintageNet.Technology.Gadget,
-      source_config: input,
+      type: VintageNetDirect,
+      source_config: normalized_input,
       child_specs: [
         %{id: {OneDHCPD, "usb0"}, start: {OneDHCPD, :start_server, ["usb0"]}},
         {VintageNet.Interface.LANConnectivityChecker, "usb0"}
