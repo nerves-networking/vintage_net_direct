@@ -3,8 +3,6 @@ defmodule VintageNetDirectTest do
   alias VintageNet.Interface.RawConfig
   alias VintageNetDirect
 
-  import VintageNetTest.Utils
-
   test "normalization simplifies configuration" do
     input = %{type: VintageNetDirect, random_field: 42}
 
@@ -26,7 +24,7 @@ defmodule VintageNetDirectTest do
       vintage_net_direct: %{hostname: "test_hostname"}
     }
 
-    output = VintageNetDirect.to_raw_config("usb0", input, default_opts())
+    output = VintageNetDirect.to_raw_config("usb0", input, Utils.default_opts())
 
     expected = %RawConfig{
       ifname: "usb0",

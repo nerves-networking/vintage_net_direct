@@ -3,8 +3,6 @@ defmodule GadgetCompatibilityTest do
   alias VintageNet.Interface.RawConfig
   alias VintageNet.Technology.Gadget
 
-  import VintageNetTest.Utils
-
   #
   # These tests ensure that VintageNet.Technology.Gadget users get updated properly.
   # This is super-important to keep for a while so that pre-0.7.0 users are not broken.
@@ -30,7 +28,7 @@ defmodule GadgetCompatibilityTest do
       gadget: %{hostname: "test_hostname"}
     }
 
-    output = Gadget.to_raw_config("usb0", input, default_opts())
+    output = Gadget.to_raw_config("usb0", input, Utils.default_opts())
     normalized_input = Gadget.normalize(input)
 
     expected = %RawConfig{
