@@ -32,7 +32,6 @@ jobs:
         environment:
           ELIXIR_VERSION: 1.9.1-otp-22
           LC_ALL: C.UTF-8
-          COVERALLS_REPO_TOKEN: sp50A1O1w2fIHf8c6ED6iMRQvtLCTJbeu
     <<: *defaults
     steps:
       - checkout
@@ -43,7 +42,7 @@ jobs:
           keys:
             - v1-mix-cache-{{ checksum "mix.lock" }}
       - run: mix deps.get
-      - run: MIX_ENV=test mix coveralls.circle
+      - run: mix test
       - run: mix format --check-formatted
       - run: MIX_ENV=docs mix docs
       - run: mix hex.build

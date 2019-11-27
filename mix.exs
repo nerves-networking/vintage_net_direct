@@ -10,7 +10,6 @@ defmodule VintageNetDirect.MixProject do
       version: @version,
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
-      test_coverage: [tool: ExCoveralls],
       start_permanent: Mix.env() == :prod,
       build_embedded: true,
       deps: deps(),
@@ -52,7 +51,6 @@ defmodule VintageNetDirect.MixProject do
   defp deps do
     [
       {:ex_doc, "~> 0.19", only: :docs, runtime: false},
-      {:excoveralls, "~> 0.8", only: :test, runtime: false},
       {:dialyxir, "~> 1.0.0-rc.6", only: [:dev, :test], runtime: false},
       {:vintage_net, "~> 0.7.0-dev", path: "../vintage_net", override: true},
       {:one_dhcpd, "~> 0.2.3"}
