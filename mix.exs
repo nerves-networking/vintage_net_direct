@@ -46,11 +46,11 @@ defmodule VintageNetDirect.MixProject do
 
   defp deps do
     [
-      {:ex_doc, "~> 0.19", only: :docs, runtime: false},
       {:dialyxir, "~> 1.0.0-rc.6", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.19", only: :docs, runtime: false},
+      {:one_dhcpd, "~> 0.2.3"},
       {:vintage_net, "~> 0.7.0-dev",
-       github: "nerves-networking/vintage_net", branch: "the-split", override: true},
-      {:one_dhcpd, "~> 0.2.3"}
+       github: "nerves-networking/vintage_net", branch: "the-split", override: true}
     ]
   end
 
