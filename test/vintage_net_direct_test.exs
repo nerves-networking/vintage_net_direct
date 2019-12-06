@@ -31,7 +31,7 @@ defmodule VintageNetDirectTest do
       type: VintageNetDirect,
       source_config: input,
       child_specs: [
-        %{id: {OneDHCPD, "usb0"}, start: {OneDHCPD, :start_server, ["usb0"]}},
+        {OneDHCPD.Server, ["usb0", []]},
         {VintageNet.Interface.LANConnectivityChecker, "usb0"}
       ],
       down_cmds: [

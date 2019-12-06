@@ -87,7 +87,7 @@ defmodule VintageNetDirect do
       type: __MODULE__,
       source_config: normalized_config,
       child_specs: [
-        one_dhcpd_child_spec(ifname)
+        {OneDHCPD.Server, [ifname, []]}
       ]
     }
     |> IPv4Config.add_config(ipv4_config, opts)
@@ -112,12 +112,5 @@ defmodule VintageNetDirect do
     else
       {:error, "Can't find #{path}"}
     end
-  end
-
-  defp one_dhcpd_child_spec(ifname) do
-    %{
-      id: {OneDHCPD, ifname},
-      start: {OneDHCPD, :start_server, [ifname]}
-    }
   end
 end
