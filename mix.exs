@@ -51,8 +51,7 @@ defmodule VintageNetDirect.MixProject do
       {:ex_doc, "~> 0.19", only: :docs, runtime: false},
       {:excoveralls, "~> 0.8", only: :test, runtime: false},
       {:one_dhcpd, "~> 0.2.3"},
-      {:vintage_net, "~> 0.7.0-dev",
-       github: "nerves-networking/vintage_net", branch: "the-split", override: true}
+      {:vintage_net, "~> 0.7.0"}
     ]
   end
 
