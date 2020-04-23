@@ -35,6 +35,7 @@ defmodule GadgetCompatibilityTest do
       ifname: "usb0",
       type: VintageNetDirect,
       source_config: normalized_input,
+      required_ifnames: ["usb0"],
       child_specs: [
         {OneDHCPD.Server, ["usb0", []]},
         {VintageNet.Interface.LANConnectivityChecker, "usb0"}

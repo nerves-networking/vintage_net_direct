@@ -30,6 +30,7 @@ defmodule VintageNetDirectTest do
       ifname: "usb0",
       type: VintageNetDirect,
       source_config: input,
+      required_ifnames: ["usb0"],
       child_specs: [
         {OneDHCPD.Server, ["usb0", []]},
         {VintageNet.Interface.LANConnectivityChecker, "usb0"}
