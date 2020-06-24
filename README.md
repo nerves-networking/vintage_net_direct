@@ -1,7 +1,7 @@
 ![vintage net logo](assets/logo.png)
 
 [![Hex version](https://img.shields.io/hexpm/v/vintage_net_direct.svg "Hex version")](https://hex.pm/packages/vintage_net_direct)
-[![API docs](https://img.shields.io/hexpm/v/vintage_net_direct.svg?label=hexdocs "API docs")](https://hexdocs.pm/vintage_net_direct/VintageNet.html)
+[![API docs](https://img.shields.io/hexpm/v/vintage_net_direct.svg?label=hexdocs "API docs")](https://hexdocs.pm/vintage_net_direct/VintageNetDirect.html)
 [![CircleCI](https://circleci.com/gh/nerves-networking/vintage_net_direct.svg?style=svg)](https://circleci.com/gh/nerves-networking/vintage_net_direct)
 [![Coverage Status](https://coveralls.io/repos/github/nerves-networking/vintage_net_direct/badge.svg?branch=master)](https://coveralls.io/github/nerves-networking/vintage_net_direct?branch=master)
 
