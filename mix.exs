@@ -8,7 +8,7 @@ defmodule VintageNetDirect.MixProject do
     [
       app: :vintage_net_direct,
       version: @version,
-      elixir: "~> 1.7",
+      elixir: "~> 1.9",
       test_coverage: [tool: ExCoveralls],
       start_permanent: Mix.env() == :prod,
       build_embedded: true,
