@@ -33,7 +33,7 @@ defmodule VintageNetDirectTest do
       required_ifnames: ["usb0"],
       child_specs: [
         {OneDHCPD.Server, ["usb0", []]},
-        {VintageNet.Interface.LANConnectivityChecker, "usb0"}
+        {VintageNet.Connectivity.LANChecker, "usb0"}
       ],
       down_cmds: [
         {:fun, VintageNet.RouteManager, :clear_route, ["usb0"]},
