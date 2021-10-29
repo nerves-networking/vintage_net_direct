@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.10.3
+
+* Changes
+  * Support `one_dhcpd v1.0.0` as well.
+
 ## v0.10.2
 
 * Changes
