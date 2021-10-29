@@ -55,7 +55,7 @@ defmodule VintageNetDirect.MixProject do
   defp deps do
     [
       {:vintage_net, "~> 0.9.1 or ~> 0.10.0 or ~> 0.11.0"},
-      {:one_dhcpd, "~> 0.2.3"},
+      {:one_dhcpd, "~> 1.0 or ~> 0.2.3"},
       {:credo, "~> 1.2", only: :test, runtime: false},
       {:dialyxir, "~> 1.1.0", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.22", only: :docs, runtime: false},
