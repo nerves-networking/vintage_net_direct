@@ -87,7 +87,7 @@ defmodule VintageNetDirect do
       type: __MODULE__,
       source_config: normalized_config,
       required_ifnames: [ifname],
-      child_specs: [{OneDHCPD.Server, [ifname, []]}]
+      child_specs: [{OneDHCPD.Server, [ifname, [subnet: subnet]]}]
     }
     |> IPv4Config.add_config(ipv4_config, opts)
   end
