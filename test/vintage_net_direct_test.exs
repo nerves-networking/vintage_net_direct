@@ -32,7 +32,7 @@ defmodule VintageNetDirectTest do
       source_config: input,
       required_ifnames: ["usb0"],
       child_specs: [
-        {OneDHCPD.Server, ["usb0", []]},
+        {OneDHCPD.Server, ["usb0", [subnet: {172, 31, 246, 64}]]},
         {VintageNet.Connectivity.LANChecker, "usb0"}
       ],
       down_cmds: [
