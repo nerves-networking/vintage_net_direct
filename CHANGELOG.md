@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.10.4
+
+* Changes
+  * Fix issue where manually specifying a hostname would cause the subnet to be
+    set incorrectly in the DHCP responses. Huge thanks to @aadavids for finding
+    and fixing this.
+
 ## v0.10.3
 
 * Changes
