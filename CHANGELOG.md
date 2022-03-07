@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.10.5
+
+* Changes
+  * Support `one_dhcpd v2.0.0` - OneDHCPD 2.0 removes functions that
+    VintageNetDirect didn't use.
+
 ## v0.10.4
 
 * Changes
