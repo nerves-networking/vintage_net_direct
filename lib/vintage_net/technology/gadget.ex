@@ -1,12 +1,12 @@
 defmodule VintageNet.Technology.Gadget do
-  @behaviour VintageNet.Technology
-
   @moduledoc """
   Deprecated - Use VintageNetDirect now
 
   This module will automatically redirect your configurations to VintageNetDirect so
   no changes are needed to your code. New code should use the new module.
   """
+  @behaviour VintageNet.Technology
+
   @impl VintageNet.Technology
   def normalize(%{type: __MODULE__} = config) do
     config

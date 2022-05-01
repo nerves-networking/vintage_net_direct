@@ -1,9 +1,4 @@
 defmodule VintageNetDirect do
-  @behaviour VintageNet.Technology
-
-  alias VintageNet.Interface.RawConfig
-  alias VintageNet.IP.IPv4Config
-
   @moduledoc """
   Support for directly connected Ethernet configurations
 
@@ -41,7 +36,12 @@ defmodule VintageNetDirect do
   %{type: VintageNetDirect}
   ```
   """
-  @impl true
+  @behaviour VintageNet.Technology
+
+  alias VintageNet.Interface.RawConfig
+  alias VintageNet.IP.IPv4Config
+
+  @impl VintageNet.Technology
   def normalize(%{type: __MODULE__} = config) do
     normalized =
       get_specific_options(config)
@@ -60,7 +60,7 @@ defmodule VintageNetDirect do
 
   defp normalize_options(_specific_config), do: %{}
 
-  @impl true
+  @impl VintageNet.Technology
   def to_raw_config(ifname, %{type: __MODULE__} = config, opts) do
     normalized_config = normalize(config)
 
@@ -92,12 +92,12 @@ defmodule VintageNetDirect do
     |> IPv4Config.add_config(ipv4_config, opts)
   end
 
-  @impl true
+  @impl VintageNet.Technology
   def ioctl(_ifname, _command, _args) do
     {:error, :unsupported}
   end
 
-  @impl true
+  @impl VintageNet.Technology
   def check_system(_opts) do
     # TODO
     :ok
