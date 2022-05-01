@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.10.6 - 2022-04-30
+
+* Changes
+  * Support `vintage_net v0.12.0`
+
 ## v0.10.5
 
 * Changes
