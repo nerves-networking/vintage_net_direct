@@ -45,7 +45,18 @@ defmodule VintageNetDirectTest do
       up_cmd_millis: 5000,
       up_cmds: [
         {:run_ignore_errors, "ip", ["addr", "flush", "dev", "usb0", "label", "usb0"]},
-        {:run, "ip", ["addr", "add", "172.31.246.65/30", "dev", "usb0", "label", "usb0"]},
+        {:run, "ip",
+         [
+           "addr",
+           "add",
+           "172.31.246.65/30",
+           "dev",
+           "usb0",
+           "broadcast",
+           "172.31.246.67",
+           "label",
+           "usb0"
+         ]},
         {:run, "ip", ["link", "set", "usb0", "up"]},
         {:fun, VintageNet.RouteManager, :clear_route, ["usb0"]},
         {:fun, VintageNet.NameResolver, :clear, ["usb0"]}
