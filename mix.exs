@@ -54,7 +54,7 @@ defmodule VintageNetDirect.MixProject do
       {:vintage_net, "~> 0.9.1 or ~> 0.10.0 or ~> 0.11.0 or ~> 0.12.0 or ~> 0.13.0"},
       {:one_dhcpd, "~> 2.0 or ~> 1.0 or ~> 0.2.3"},
       {:credo, "~> 1.2", only: :test, runtime: false},
-      {:dialyxir, "~> 1.4.1", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.4.1", only: :dev, runtime: false},
       {:ex_doc, "~> 0.22", only: :docs, runtime: false}
     ]
   end
