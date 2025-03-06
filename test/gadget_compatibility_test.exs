@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2019 Frank Hunleth
+# SPDX-FileCopyrightText: 2019 Jon Carstens
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 defmodule GadgetCompatibilityTest do
   use ExUnit.Case
   alias VintageNet.Interface.RawConfig

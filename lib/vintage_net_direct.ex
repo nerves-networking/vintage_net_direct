@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2019 Frank Hunleth
+# SPDX-FileCopyrightText: 2022 Andrew Davidson
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 defmodule VintageNetDirect do
   @moduledoc """
   Support for directly connected Ethernet configurations

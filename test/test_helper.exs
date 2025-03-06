@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2019 Frank Hunleth
+# SPDX-FileCopyrightText: 2019 Jon Carstens
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 defmodule Utils do
   @spec default_opts() :: keyword()
   def default_opts() do
@@ -7,11 +12,6 @@ defmodule Utils do
 end
 
 File.rm_rf!("test/tmp")
-
-# Always warning as errors
-if Version.match?(System.version(), "~> 1.10") do
-  Code.put_compiler_option(:warnings_as_errors, true)
-end
 
 # Networking support has enough pieces that are singleton in nature
 # that parallel running of tests can't be done.

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2019 Frank Hunleth
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 defmodule VintageNet.Technology.Gadget do
   @moduledoc """
   Deprecated - Use VintageNetDirect now

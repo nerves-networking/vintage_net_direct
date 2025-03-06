@@ -37,15 +37,20 @@ defmodule VintageNetDirect.MixProject do
   defp package do
     %{
       files: [
+        "CHANGELOG.md",
         "lib",
-        "test",
+        "LICENSES/*",
         "mix.exs",
+        "NOTICE",
         "README.md",
-        "LICENSE",
-        "CHANGELOG.md"
+        "REUSE.toml"
       ],
       licenses: ["Apache-2.0"],
-      links: %{"GitHub" => @source_url}
+      links: %{
+        "GitHub" => @source_url,
+        "REUSE Compliance" =>
+          "https://api.reuse.software/info/github.com/nerves-networking/vintage_net_direct"
+      }
     }
   end
 
