@@ -14,13 +14,7 @@ defmodule VintageNetDirect.MixProject do
       dialyzer: dialyzer(),
       docs: docs(),
       package: package(),
-      description: description(),
-      preferred_cli_env: %{
-        docs: :docs,
-        "hex.publish": :docs,
-        "hex.build": :docs,
-        credo: :test
-      }
+      description: description()
     ]
   end
 
@@ -28,6 +22,10 @@ defmodule VintageNetDirect.MixProject do
     [
       extra_applications: [:logger]
     ]
+  end
+
+  def cli do
+    [preferred_envs: %{docs: :docs, "hex.publish": :docs, "hex.build": :docs, credo: :test}]
   end
 
   defp description do

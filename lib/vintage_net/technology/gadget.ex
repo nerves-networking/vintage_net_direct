@@ -14,7 +14,7 @@ defmodule VintageNet.Technology.Gadget do
   @impl VintageNet.Technology
   def normalize(%{type: __MODULE__} = config) do
     config
-    |> update_config
+    |> update_config()
     |> VintageNetDirect.normalize()
   end
 
