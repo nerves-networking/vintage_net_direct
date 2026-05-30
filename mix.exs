@@ -8,7 +8,7 @@ defmodule VintageNetDirect.MixProject do
     [
       app: :vintage_net_direct,
       version: @version,
-      elixir: "~> 1.11",
+      elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       dialyzer: dialyzer(),
@@ -55,7 +55,7 @@ defmodule VintageNetDirect.MixProject do
   defp deps do
     [
       {:vintage_net, "~> 0.9.1 or ~> 0.10.0 or ~> 0.11.0 or ~> 0.12.0 or ~> 0.13.0"},
-      {:one_dhcpd, "~> 2.0 or ~> 1.0 or ~> 0.2.3"},
+      {:one_dhcpd, "~> 3.0 or ~> 2.0 or ~> 1.0 or ~> 0.2.3"},
       {:credo, "~> 1.2", only: :test, runtime: false},
       {:dialyxir, "~> 1.4.1", only: :dev, runtime: false},
       {:ex_doc, "~> 0.22", only: :docs, runtime: false}
