@@ -5,6 +5,13 @@
 
 # Changelog
 
+## v0.10.8 - 2025-05-30
+
+* Changes
+  * Allow `one_dhcpd v3.0` to be used
+  * Add copyright and license headers for REUSE compliance
+  * Drop support for Elixir 1.14 and earlier
+
 ## v0.10.7 - 2022-01-22
 
 * Changes

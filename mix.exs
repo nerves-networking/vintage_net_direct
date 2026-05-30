@@ -5,7 +5,7 @@
 defmodule VintageNetDirect.MixProject do
   use Mix.Project
 
-  @version "0.10.7"
+  @version "0.10.8"
   @source_url "https://github.com/nerves-networking/vintage_net_direct"
 
   def project do
