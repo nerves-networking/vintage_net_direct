@@ -8,6 +8,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 [![Hex version](https://img.shields.io/hexpm/v/vintage_net_direct.svg "Hex version")](https://hex.pm/packages/vintage_net_direct)
 [![API docs](https://img.shields.io/hexpm/v/vintage_net_direct.svg?label=hexdocs "API docs")](https://vintage-net-direct.hexdocs.pm/VintageNetDirect.html)
+[![Nerves compatibility](https://compatibility.nerves-project.org/badge/vintage_net_direct.svg)](https://compatibility.nerves-project.org/packages/vintage_net_direct)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/nerves-networking/vintage_net_direct/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/nerves-networking/vintage_net_direct/tree/main)
 [![REUSE status](https://api.reuse.software/badge/github.com/nerves-networking/vintage_net_direct)](https://api.reuse.software/info/github.com/nerves-networking/vintage_net_direct)
 
