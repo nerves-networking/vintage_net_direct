@@ -38,3 +38,24 @@ And then add the following to your `:vintage_net` configuration:
   ]
 ```
 
+## Igniter
+
+If your project uses [Igniter](https://hex.pm/packages/igniter), the dependency
+and the configuration above can be added by running:
+
+```sh
+mix igniter.install vintage_net_direct
+```
+
+The installer adds `{"usb0", %{type: VintageNetDirect}}` to the `:vintage_net`
+configuration in `config/target.exs`. Other network interfaces are kept and if
+`"usb0"` is already configured, it's left as it is.
+
+If other dependencies in your `mix.exs` are restricted to devices with a module
+attribute like `targets: @all_targets`, the `:vintage_net_direct` dependency
+gets the same option.
+
+Options:
+
+* `--direct-ifname` - the name of the network interface to configure. Defaults
+  to `usb0`.
